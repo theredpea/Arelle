@@ -493,9 +493,9 @@ class DialogPluginManager(Toplevel):
         self.enableDisableAll(False)
                     
     def enableDisableAll(self, doEnable):
-        for module in self.pluginConfig["modules"]:
-            if not module.get("isImported"):
-                moduleInfo = self.pluginConfig["modules"][module]
+        for moduleName, moduleInfo in self.pluginConfig["modules"].items():
+
+            if not moduleInfo.get("isImported"):
                 def _enableDisableAll(moduleInfo):
                     if doEnable:
                         moduleInfo["status"] = "enabled"
